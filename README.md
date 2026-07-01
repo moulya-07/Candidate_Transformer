@@ -132,6 +132,26 @@ pytest
 - Graceful error handling (log warnings, never crash on bad input)
 - Extensible parser interface for new data sources
 
+Order Of commands to Run
+
+1. cd candidate-transformer      (if needed)
+
+2. dir
+
+3. pytest
+
+4. python -m src.main --csv input/candidates.csv --config config/output_config.json --output output/result.json
+
+5. type output\result.json
+
+6. python -m src.main --github octocat --config config/output_config.json --output output/github_result.json
+
+7. type output\github_result.json
+
+8. python -m src.main --csv input/candidates.csv --github octocat --config config/output_config.json --output output/merged_result.json
+
+9. type output\merged_result.json
+
 
 
 
