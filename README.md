@@ -152,6 +152,16 @@ Order Of commands to Run
 
 9. type output\merged_result.json
 
+#Design Decision 
+
+One design decision I'm particularly happy with is using a canonical profile model as the central representation of candidate data. Each data source, like Recruiter CSV or GitHub, is first parsed into this common format. This keeps the parsers independent from the rest of the pipeline and makes the system easy to extend. If I want to support another source like LinkedIn or an ATS JSON in the future, I only need to implement a new parser without changing the merge engine, confidence engine, or projection layer.
+
+#Edge Case 
+
+One edge case I handled is missing or incomplete data from different sources. For example, if a GitHub profile doesn't contain an email or has no repositories, the parser doesn't crash. It safely returns the available information, logs the issue if necessary, and allows the merge engine to continue using data from other sources. This makes the pipeline more robust and fault tolerant.
+
+Another edge case is duplicate information coming from multiple sources. During merging, emails, skills, links, and other list fields are normalized and deduplicated, so the final candidate profile contains only unique values.
+
 
 
 
