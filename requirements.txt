@@ -1,0 +1,11 @@
+# Core
+pydantic>=2.5,<3.0
+pandas>=2.1,<3.0
+requests>=2.31,<3.0
+
+# Normalization utilities (used in later stages)
+phonenumbers>=8.13,<9.0
+python-dateutil>=2.8,<3.0
+
+# Development & testing
+pytest>=7.4,<9.0
